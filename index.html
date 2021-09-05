@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>        
+    <meta charset="utf-8">  
+	<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Playfair+Display&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+    <title>HW19-js-ajax</title>
+  </head>
+<body>		
+<div>HW19-js-ajax</div>
+
+<div>
+  1. Создайте на вашем github репозиторий с именем HW19-js-ajax. Все результаты нужно запушить в ваш репозиторий и прикрепить ссылку на hillel портале.<br>
+  2. Создайте index.html в котором подключите js script.<br>
+  3. Подготовка<br>
+    3.1 Установить:<br>
+      3.1.1 https://nodejs.org/uk/  - LTS версию<br>
+      3.1.2 Затем выполнить в консоле npm install -g json-server<br>
+    3.2 Создайте в папке с заданием:<br>
+      3.2.1 Создайте папку db<br>
+      3.2.2 Создайте в папке db json файл с именем db. В который поместите содержимое c https://gist.github.com/OlegRovenskyi/8b5191b7546f6f60f68bb5641e9d7c3f. Должны получить следующую структуру: db/db.json<br>
+    3.3 Чтобы запустить сервер нужно в консоле или терменале зайти в папку с файлом db.json и запустить команд: json-server --watch db.json<br>
+    3.4 чтобы остановить сервер нажмите вместе комбинацию клавиш в консоли: CTRL C<br>
+  4. Задание:<br>
+  Использовать ajax для получения постов и создания постов.<br>
+    4.1 При загрузке страницы нужно вывести список всех постов в html.<br>
+    4.2 Под списком постов разместить форму для создания поста:<br>
+  инпуты для title и author и кнопка create.<br>
+    4.3 При нажатии на кнопку create отправить (post) запрос на создание поста<br>
+    4.4 При успешном создании поста отобразить пост в конце или начале списка (на ваш выбор)<br>
+    4.5 При возникновении ошибки показать сообщение (можно вывести в консоль).<br> 
+  5. Полезная информация:<br>
+    5.1 API<br>
+      5.1.1 get - http://localhost:3000/posts // получение всех постов<br>
+      5.1.2post - http://localhost:3000/posts // создание поста (не забываем передать данные)!!!! - Данная api при создании возвращает 201 статус код - Success<br>
+  6. Кому интересно более детальная информация о json-server: https://github.com/typicode/json-server<br>
+</div>
+<div class="mainDiv"> 
+  <form  name="posts" id="formId">
+    Title<input id="inputTitle" type="text" title = 'title' name="title">
+    Author<input id="inputAuthor" type="text" author = 'author' name="author">
+    <button id="submit">Send</button>
+    <div id="posts"></div>                
+  </form>
+</div>
+  <script src="./main.js" defer></script>
+</body>
+</html>
