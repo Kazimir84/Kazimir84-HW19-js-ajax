@@ -7,6 +7,9 @@ let submit = document.getElementById('submit');
 let getJSON = function(url) {
     return new Promise(function(resolve, reject) {
         let xhr = new XMLHttpRequest();
+        xhr = typeof XMLHttpRequest != 'undefined'
+		? new XMLHttpRequest()
+		: new ActiveXObject('Microsoft.XMLHTTP');
         xhr.open('get', url, true);
         xhr.responseType = 'json';
         xhr.onload = function() {
@@ -18,6 +21,13 @@ let getJSON = function(url) {
                 reject(status);
             }
         };
+         xhr.onprogress = function(event) {
+            if (event.lengthComputable) {
+                alert(`Получено ${event.loaded} из ${event.total} байт`);
+             } else {
+                alert(`Получено ${event.loaded} байт`); // если в ответе нет заголовка Content-Length
+            }            
+          };
         xhr.onerror = () => {
             reject(`Возникла ошибка при подключении к: ${url}`);
         }
@@ -43,6 +53,9 @@ getJSON(url)
 let saveJson = function(url, data) {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
+        xhr = typeof XMLHttpRequest != 'undefined'
+		? new XMLHttpRequest()
+		: new ActiveXObject('Microsoft.XMLHTTP');
         xhr.open('post', url, true);
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.responseType = 'json';
