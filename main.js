@@ -61,7 +61,7 @@ let saveJson = function(url, data) {
         xhr.responseType = 'json';
         xhr.onload = () => {
             let status = xhr.status;
-            if (status === 200) {
+            if (status === 201) {
                 console.log(`Данные на ${url} успешно отправлены.`);
                 resolve(xhr.response);
             } else { 
