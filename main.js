@@ -23,9 +23,9 @@ let getJSON = function(url) {
         };
          xhr.onprogress = function(event) {
             if (event.lengthComputable) {
-                alert(`Получено ${event.loaded} из ${event.total} байт`);
+                console.log(`Получено ${event.loaded} из ${event.total} байт`);
              } else {
-                alert(`Получено ${event.loaded} байт`); // если в ответе нет заголовка Content-Length
+                console.log(`Получено ${event.loaded} байт`);
             }            
           };
         xhr.onerror = () => {
